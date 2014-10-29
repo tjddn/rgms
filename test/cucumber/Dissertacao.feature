@@ -65,29 +65,33 @@ Feature: Dissertation Tests
     And I delete "Delete dissertation"
     Then the system has no dissertation entitled "Delete dissertation"
 
-  Scenario: upload dissertation without a file
+  Scenario: new dissertation with file
     Given I am at the publications menu
     When I select the "Dissertacao" option at the program menu
-    And I select the upload button at the dissertation page
-    Then I'm still on dissertation page
+    And I select the new dissertation option at the dissertation page
+    And I can add the dissertation with a file "Modularity.pdf"
+    Then the system has show me the message "Modularity.pdf has been stored with success!" 
 
   Scenario: upload dissertation with a file
     Given the system has some dissertation stored
-    Given the system has no dissertation entitled "New dissertation"
-    When I upload a new dissertation "curriculo3.xml" with title "New dissertation"
+    And the system has no dissertation entitled "New dissertation"
+    When I click the upload a new dissertation button with title "New dissertation"
     Then the system has more dissertations now
     
   Scenario: upload a dissertation and system has no dissertation stored
     Given the system has no dissertation entitled "New dissertation"
-    When I upload a new dissertation "curriculo2.xml" with title "New dissertation"
+    And I am logged into the system
+    when I click on the upload new dissertantion buton 
+    And name the new dissertation as "curriculo2.xml"
     Then the system has more dissertations now
     
 #if ($contextualInformation)
 
+  
   Scenario: create a new dissertation with user data already filled by default
     Given I am at the publications menu
     When I select the "Dissertacao" option at the program menu
-    And I select the new dissertation option at the dissertation page
+    And I select the add new dissertation button at the dissertation page
     Then I see my user listed as an author member of dissertation by default
     And I see my school name as school of dissertation by default
 #end
