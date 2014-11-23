@@ -495,20 +495,20 @@ Then(~'^the system removes the articles "([^"]*)" and "([^"]*)"$') { String titl
 	assert periodicoNoExist(title2)
 }
 
-And(~'^the system contains the "([^"]*)" article$') { String title1 ->
-	assert Periodico.findByTitle(title1) != null
-}
+//And(~'^the system contains the "([^"]*)" article$') { String title1 ->
+//	assert Periodico.findByTitle(title1) != null
+//}
 
-And(~'^I create 3 articles entitled "([^"]*)" with file name "([^"]*)", "([^"]*)" with file name "([^"]*)" and "([^"]*)" with file name "([^"]*)"$') { String title1, filename1, title2, filename2, title3, filename3 ->
-	addNewArticleWeb(title1, filename1)
-	addNewArticleWeb(title2, filename2)
-	addNewArticleWeb(title3, filename3)
-}
+//And(~'^I create 3 articles entitled "([^"]*)" with file name "([^"]*)", "([^"]*)" with file name "([^"]*)" and "([^"]*)" with file name "([^"]*)"$') { String title1, filename1, title2, filename2, title3, filename3 ->
+//	addNewArticleWeb(title1, filename1)
+//	addNewArticleWeb(title2, filename2)
+//	addNewArticleWeb(title3, filename3)
+//}
 
-And(~'I select to remove the selected articles$') {->
-	at ArticlesPage
-	page.selectRemoveMultipleArticles()
-}
+//And(~'I select to remove the selected articles$') {->
+//	at ArticlesPage
+//	page.selectRemoveMultipleArticles()
+//}
 
 Given(~'^I am at the new article page$'){->
 	Login()
