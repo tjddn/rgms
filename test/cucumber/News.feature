@@ -30,9 +30,14 @@ Feature: news
 
   Scenario: update news from twitter account
     Given the research group "SPG" in the system has a Twitter account "@HumanBrainProj" associated
-     And  the research group "SPG" news list is empty
-     When I request to update the news from Twitter to research group "SPG"
-     Then news of "SPG" research group has been updated
+    And  the research group "SPG" news list is empty
+    When I request to update the news from Twitter to research group "SPG"
+    Then news of "SPG" research group has been updated
+
+  Scenario: remove Twitter account
+    Given the research group "SPG" in the system has a Twitter account associated
+    When I disassociate account "HumanBrainProj" group to "SPG"
+    Then "SPG" research group has no twitter account "@HumanBrainProj" registered
 
   Scenario: consecutive update without duplicate news
     Given the research group "SPG" in the system has a Twitter account "@HumanBrainProj" associated
@@ -67,27 +72,7 @@ Feature: news
     And I select the option to remove in news show page
     Then the news "Noticia1" is properly removed by the system
 
-  Scenario: new invalid news (invalid date)
+  Scenario: new invalid news (invalid description)
     Given the system has no news with description "teste" and date "31-02-2013" for "SPG" research group
     When I try to create a news with description "teste" and date "31-02-2013" for "SPG" research group
     Then the news with description "teste", date "31-02-2013" and "SPG" research group is not stored by the system because it is invalid
-
-  #if($listNews)
-  Scenario: list news
-    Given the system has one new with description "noticia1"
-    And the system has one new with description "noticia2"
-    When the system list the news
-    Then the list has a new with description "noticia1"
-    And the list has a new with description "noticia2"
-       #end
-
-  #if($listNewsWeb)
-  Scenario: list news web
-    Given I am at the publications menu
-    And I create a research group because it is necessary
-    And  I create a new with description "noticia1"
-    And  I create a new with description "noticia2"
-    When I select the News option at the publications menu
-    Then I can see the new with description "noticia1" in the list
-    And I can see the new with description "noticia2" in the list
-    #end
