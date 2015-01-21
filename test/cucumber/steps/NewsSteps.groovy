@@ -257,7 +257,6 @@ Given(~'^the research group "([^"]*)" in the system has a Twitter account associ
     TestDataAndOperations.createResearchGroup(groupName)
     researchGroup = ResearchGroup.findByName(groupName)
     assert researchGroup != null
-    assert researchGroup.twitter == null
 }
 
 When(~'^I disassociate account "([^"]*)" group to "([^"]*)"$') { String twitter, String groupName ->
