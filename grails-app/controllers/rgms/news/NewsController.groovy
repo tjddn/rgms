@@ -10,11 +10,11 @@ class NewsController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 20, 100)
-        [newsInstanceList : News.list(params), newsInstanceTotal: News.count()]
+        [newsInstanceList: News.list(params), newsInstanceTotal: News.count()]
     }
 
     def show(Long id) {
-        def newsInstance = News.get(id)
+        getIDNews(id)
         newsInstanceRedirectIfItsNull(id, newsInstance)
     }
 
@@ -100,7 +100,7 @@ class NewsController {
     }
 
     def update(Long id){
-        def newsInstance = News.get(id)
+        getIDNews(id)
         if(!newsInstanceRedirectIfItsNull(id,newsInstance)){
             return
         }
@@ -127,6 +127,10 @@ class NewsController {
             return true
         }
         else return false
+    }
+
+    def getIDNews(Long id ){
+        def newsInstance = News.get(id)
     }
 
 }

@@ -1,4 +1,4 @@
-@i9n
+  @i9n
 Feature: news
   As research group member in RMGS system
   I want to publish, remove and modify news about our researches, schedule and any other thing.
