@@ -77,7 +77,7 @@ class FunderController {
         }
     }
 
-    def editAndShow(Long id){
+    def editOrShow(Long id){
         def funderInstance = Funder.get(id)
         if (!funderInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'funder.label', default: 'Funder'), id])
