@@ -94,7 +94,7 @@ class BookChapterController {
         aux.delete(id, bookChapterInstance, 'bookChapter.label', 'BookChapter');
     }
 
-    def checkLivro(Long id){
+    def checkBook(Long id){
         def bookChapterInstance = BookChapter.get(id)
         boolean isReturned = aux.check(id, bookChapterInstance, 'bookChapter.label', 'BookChapter');
     }
