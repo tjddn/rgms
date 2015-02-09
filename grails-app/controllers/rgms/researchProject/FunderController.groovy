@@ -40,12 +40,7 @@ class FunderController {
     }
 
     def update(Long id, Long version) {
-        def funderInstance = Funder.get(id)
-        if (!funderInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'funder.label', default: 'Funder'), id])
-            redirect(action: "list")
-            return
-        }
+        editAndShow(id)
 
         if (version != null) {
             if (funderInstance.version > version) {
@@ -69,12 +64,7 @@ class FunderController {
     }
 
     def delete(Long id) {
-        def funderInstance = Funder.get(id)
-        if (!funderInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'funder.label', default: 'Funder'), id])
-            redirect(action: "list")
-            return
-        }
+        editAndShow(id)
 
         try {
             funderInstance.delete(flush: true)
